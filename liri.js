@@ -4,6 +4,7 @@ var keys = require("./keys.js");
 var Twitter = require("twitter");
 var Spotify = require("node-spotify-api");
 var request = require("request");
+var fs = require("fs");
 var action = process.argv[2];
 var value = process.argv[3];
 
@@ -16,7 +17,20 @@ function myTweets() {
     if (!error) {
         for (var i = 0; i < tweets.length; i++) {
             console.log(i+1 + ". " + tweets[i].text + "\nTweeted on: " + tweets[i].created_at + "\n");
+            fs.appendFile("log.txt", i+1 + ". " + tweets[i].text + "\nTweeted on: " + tweets[i].created_at + "\n", function(err) {
+
+                // If an error was experienced we will log it.
+                if (err) {
+                  console.log(err);
+                }
+              
+                // If no error is experienced, we'll log the phrase "Content Added" to our node console.
+                
+              
+              });
         }
+        console.log("Content Added to log.txt!");
+        
     } else {
         console.log(error);
     }
@@ -63,6 +77,31 @@ function movieThis(value) {
     });
 };
 
+function doWhatItSays() {
+    fs.readFile("random.txt", "utf8", function(error, data) {
+
+        if (error) {
+          return console.log(error);
+        }else {      
+            var dataArr = data.split(",");
+            var randomAction = dataArr[0];
+            var randomValue = dataArr[1];
+            switch (randomAction) {
+                case "my-tweets":
+                    myTweets();
+                    break;
+                case "spotify-this-song":
+                    spotifyThisSong(randomValue);
+                    break;
+                case "movie-this":
+                    movieThis(randomValue);
+                    break;
+            }
+        }
+      
+      });
+}
+
 
 
 
@@ -78,7 +117,11 @@ switch (action) {
     case "movie-this":
         movieThis(value);
         break;
-    // case "do-what-it-says":
-    //     doWhatItSays();
-    //     break;
-}
+    case "do-what-it-says":
+        doWhatItSays();
+        break;
+    default: 
+        console.log("You must type an action [my-tweets, spotify-this-song, movie-this, do-what-it-says] and a value")
+        console.log("Example --> node liri.js spotify-this-song three-little-birds");
+        break;
+};
