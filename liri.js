@@ -17,7 +17,7 @@ function myTweets() {
     if (!error) {
         for (var i = 0; i < tweets.length; i++) {
             console.log(i+1 + ". " + tweets[i].text + "\nTweeted on: " + tweets[i].created_at + "\n");
-            fs.appendFile("log.txt", i+1 + ". " + tweets[i].text + "\nTweeted on: " + tweets[i].created_at + "\n", function(err) {
+            fs.appendFile("log.txt", i+1 + ". " + tweets[i].text + "\nTweeted on: " + tweets[i].created_at + "\n----------", function(err) {
 
                 // If an error was experienced we will log it.
                 if (err) {
@@ -49,8 +49,18 @@ function spotifyThisSong(value) {
         };
     
         var firstTrack = data.tracks.items[0];
-        var trackInfo = "Artist: " + firstTrack.album.artists[0].name + "\nSong: " + firstTrack.name + "\nPreview: " + firstTrack.preview_url + "\nAlbum: " + firstTrack.album.name;
+        var trackInfo = "Artist: " + firstTrack.album.artists[0].name + "\nSong: " + firstTrack.name + "\nPreview: " + firstTrack.preview_url + "\nAlbum: " + firstTrack.album.name + "\n---------------";
         console.log(trackInfo);
+
+        fs.appendFile("log.txt", trackInfo, function(err) {
+
+            // If an error was experienced we will log it.
+            if (err) {
+              console.log(err);
+            } else {
+                console.log("Track info has been added to log.txt!")
+            }
+          });
        
       });
 };
@@ -71,8 +81,18 @@ function movieThis(value) {
             var movieData = "Title: " + movieInfo.Title + "\nYear Released: " + movieInfo.Year + 
                             "\nIMDB Rating: " + movieInfo.Ratings[0].Value + "\nRotten Tomatoes: " + movieInfo.Ratings[1].Value
                             + "\nCountry: " + movieInfo.Country + "\nLanguage: " + movieInfo.Language
-                            + "\nPlot: " + movieInfo.Plot + "\nActors/Actresses: " + movieInfo.Actors;
+                            + "\nPlot: " + movieInfo.Plot + "\nActors/Actresses: " + movieInfo.Actors + "\n-----------";
             console.log(movieData);
+
+            fs.appendFile("log.txt", movieData, function(err) {
+
+                // If an error was experienced we will log it.
+                if (err) {
+                  console.log(err);
+                } else {
+                    console.log("Movie info has been added to log.txt!")
+                }
+              });
         }
     });
 };
