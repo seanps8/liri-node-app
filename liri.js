@@ -6,7 +6,7 @@ var Spotify = require("node-spotify-api");
 var request = require("request");
 var fs = require("fs");
 var action = process.argv[2];
-var value = process.argv[3];
+var value = process.argv.splice(3).join(" ");
 
 var spotify = new Spotify(keys.spotify);
 var client = new Twitter(keys.twitter);

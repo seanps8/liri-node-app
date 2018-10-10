@@ -58,4 +58,16 @@ Actors/Actresses: Willem Dafoe, Sean Patrick Flanery, Norman Reedus, David Della
 Song: I Want It That Way
 Preview: https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=5ed35073c3504612bc7c79c6fae9e3ff
 Album: The Hits--Chapter One
----------------
+---------------Artist: AC/DC
+Song: Highway to Hell
+Preview: https://p.scdn.co/mp3-preview/aa4f9186e0c3f4436bb40572a63862db80d7ef2d?cid=5ed35073c3504612bc7c79c6fae9e3ff
+Album: Highway to Hell
+---------------Title: The Girl Next Door
+Year Released: 2004
+IMDB Rating: 6.7/10
+Rotten Tomatoes: 56%
+Country: USA
+Language: English
+Plot: A teenager's dreams come true when a former porn star moves in next door and they fall in love.
+Actors/Actresses: Emile Hirsch, Elisha Cuthbert, Timothy Olyphant, James Remar
+-----------
